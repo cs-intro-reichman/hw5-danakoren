@@ -11,7 +11,7 @@ public class MyString {
         // System.out.println(countChar(hello, 'z'));
         System.out.println(spacedString("hello"));
         //// Put your other tests here.
-        System.out.println(subsetOf("", "space"));
+        System.out.println(subsetOf("passss", "space"));
         System.out.println(randomStringOfLetters(3));
         System.out.println(remove("","committee"));
         System.out.println(insertRandomly('s', "cat"));
@@ -51,11 +51,14 @@ public class MyString {
          //// Replace the following statement with your code
          boolean isSub = false;
          if (str1 == ""){
-            isSub = true;
+            return true;
          }
-         for(int i = 0 ; i < Math.min(str1.length(), str2.length()) ; i++){
-            if (countChar(str1, str2.charAt(i)) > 0){
+            for(int i = 0 ; i < str1.length() ; i++){
+            if (countChar(str2, str1.charAt(i)) == countChar(str1, str1.charAt(i))){
                 isSub = true;
+            } else{
+                return false;
+
             }
          }
         return isSub;
@@ -71,10 +74,8 @@ public class MyString {
      */
     public static String spacedString(String str) {
         //// Replace the following statement with your code
-       String newStr = "";
-    //    for (int i = str.length() - 1 ; i < 0 ; i--){
-    //     newStr += str.charAt(i) 
-    //    }
+       String newStr = " ";
+  
        for ( int i = 0 ; i < str.length() -1 ; i++){
         newStr += str.charAt(i) + " " ;
        }
