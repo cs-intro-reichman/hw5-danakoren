@@ -84,8 +84,11 @@ public class Scrabble {
 	// (these two vowels make it easier for the user to construct words)
 	public static String createHand() {
 		//// Replace the following statement with your code
-		
-		return null;
+		String str = MyString.randomStringOfLetters(HAND_SIZE -2);
+		str = MyString.insertRandomly('e', str);
+		 str = MyString.insertRandomly('a', str);
+
+		return str;
 	}
 	
     // Runs a single hand in a Scrabble game. Each time the user enters a valid word:
@@ -107,8 +110,19 @@ public class Scrabble {
 			String input = in.readString();
 			//// Replace the following break statement with code
 			//// that completes the hand playing loop
+			if (input == "."){
 			break;
 		}
+		if (isWordInDictionary(input) && MyString.subsetOf(input, hand)){
+			hand = MyString.remove(hand, input);
+			int wordScore = wordScore(input);
+		    score += wordScore;
+			System.out.println(input + " earned " + wordScore + " points. Score: " + score + " points");
+		}
+		else{
+			System.out.println("No such word in the dictionary. Try again.");
+		}}
+
 		if (hand.length() == 0) {
 	        System.out.println("Ran out of letters. Total score: " + score + " points");
 		} else {
