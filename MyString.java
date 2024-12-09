@@ -11,7 +11,7 @@ public class MyString {
         // System.out.println(countChar(hello, 'z'));
         System.out.println(spacedString("a"));
         //// Put your other tests here.
-        System.out.println(subsetOf("passss", "space"));
+        System.out.println(subsetOf("runi", "running"));
         System.out.println(randomStringOfLetters(3));
         System.out.println(remove("abc","a"));
         System.out.println(insertRandomly('s', "cat"));
@@ -49,19 +49,21 @@ public class MyString {
      */
     public static boolean subsetOf(String str1, String str2) {
          //// Replace the following statement with your code
-         boolean isSub = false;
          if (str1 == ""){
             return true;
          }
-            for(int i = 0 ; i < str1.length() ; i++){
-            if (countChar(str2, str1.charAt(i)) == countChar(str1, str1.charAt(i))){
-                isSub = true;
-            } else{
-                return false;
+         for (int i = 0; i < str1.length(); i++) {
+            char ch = str1.charAt(i);
+            int index = str2.indexOf(ch);
 
-            }
-         }
-        return isSub;
+            if (index == -1) {
+                return false;
+            }   
+            str2 = str2.substring(0, index) + str2.substring(index + 1);
+        }
+        
+
+        return true;
     }
 
     /** Returns a string which is the same as the given string, with a space

@@ -63,6 +63,7 @@ public class Scrabble {
 	// If the word includes the sequence "runi", adds 1000 points to the game.
 	public static int wordScore(String word) {
 		//// Replace the following statement with your code
+		word = word.toLowerCase();
 		int score = 0;
 		for (int i = 0 ; i < word.length() ; i++){
 			int index = word.charAt(i) - 97;
