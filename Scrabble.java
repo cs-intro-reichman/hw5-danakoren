@@ -51,8 +51,9 @@ public class Scrabble {
 		//// Replace the following statement with your code
 		boolean isInDictionary = false;
 		for (int i = 0 ; i < DICTIONARY.length ; i++){
-			if(word == DICTIONARY[i]){
+			if(word.equals(DICTIONARY[i])){
 				isInDictionary = true;
+				break;
 			}
 		}
 		return isInDictionary;
@@ -189,8 +190,8 @@ public class Scrabble {
 	}
 	public static void testPlayHands() {
 		init();
-		//playHand("ocostrza");
-		//playHand("arbffip");
+		// playHand("ocostrza");
+		playHand("arbffip");
 		//playHand("aretiin");
 	}
 }
