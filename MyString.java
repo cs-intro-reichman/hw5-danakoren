@@ -9,11 +9,11 @@ public class MyString {
         // System.out.println(countChar(hello, 'h'));
         // System.out.println(countChar(hello, 'l'));
         // System.out.println(countChar(hello, 'z'));
-        System.out.println(spacedString("hello"));
+        System.out.println(spacedString("a"));
         //// Put your other tests here.
         System.out.println(subsetOf("passss", "space"));
         System.out.println(randomStringOfLetters(3));
-        System.out.println(remove("","committee"));
+        System.out.println(remove("abc","a"));
         System.out.println(insertRandomly('s', "cat"));
     }
 
@@ -74,10 +74,10 @@ public class MyString {
      */
     public static String spacedString(String str) {
         //// Replace the following statement with your code
-       String newStr = " ";
+       String newStr = "";
   
        for ( int i = 0 ; i < str.length() -1 ; i++){
-        newStr += str.charAt(i) + " " ;
+        newStr += (str.charAt(i) + " " );
        }
        newStr += str.charAt(str.length() - 1);
         return newStr;
@@ -115,17 +115,15 @@ public class MyString {
     public static String remove(String str1, String str2) {
        //// Replace the following statement with your code 
        String newRemoveStr = "";
-       if (str1 == ""){
-        return str2;
+       if (str2 == ""){
+        return str1;
        }
-       int j = 0;
-       for( int i = 0 ; i < str2.length() ; i ++){
-        if(str2.charAt(i) == str1.charAt(j)){
-            j++;
-        } else{
-        newRemoveStr += str2.charAt(i);
+       for(int i = 0 ; i < str1.length() ; i++){
+       char ch = str1.charAt(i);
+        if(str2.indexOf(ch) == -1){
+            newRemoveStr += ch;
         }
-       }
+    }
         return newRemoveStr;
     }
 
