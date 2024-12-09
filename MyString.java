@@ -74,7 +74,10 @@ public class MyString {
      */
     public static String spacedString(String str) {
         //// Replace the following statement with your code
-       String newStr = "";
+      if( str == ""){
+        return str;
+      }
+        String newStr = "";
   
        for ( int i = 0 ; i < str.length() -1 ; i++){
         newStr += (str.charAt(i) + " " );
@@ -114,16 +117,16 @@ public class MyString {
      */
     public static String remove(String str1, String str2) {
        //// Replace the following statement with your code 
-       String newRemoveStr = "";
+       String newRemoveStr = str1;
        if (str2 == ""){
         return str1;
        }
-       for(int i = 0 ; i < str1.length() ; i++){
-       char ch = str1.charAt(i);
-        if(str2.indexOf(ch) == -1){
-            newRemoveStr += ch;
+       for(int i = 0 ; i < str2.length() ; i++){
+       int index = newRemoveStr.indexOf(str2.charAt(i));
+        if (index >= 0){
+            newRemoveStr = newRemoveStr.substring(0, index) + newRemoveStr.substring( index + 1);
         }
-    }
+       }
         return newRemoveStr;
     }
 
