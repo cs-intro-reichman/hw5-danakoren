@@ -111,7 +111,7 @@ public class Scrabble {
 			String input = in.readString();
 			//// Replace the following break statement with code
 			//// that completes the hand playing loop
-			if (input == "."){
+			if (input.equals(".")){
 			break;
 		}
 		if (isWordInDictionary(input) && MyString.subsetOf(input, hand)){
@@ -147,17 +147,23 @@ public class Scrabble {
 			String input = in.readString();
 			//// Replace the following break statement with code
 			//// that completes the game playing loop
-			break;
+			if (input.equals("e")){
+				break;
+			}
+			if (input.equals("n")){
+				playHand(createHand());
+			}
+		
 		}
 	}
 
 	public static void main(String[] args) {
 		//// Uncomment the test you want to run
-		////testBuildingTheDictionary();  
-		////testScrabbleScore();    
-		////testCreateHands();  
-		////testPlayHands();
-		////playGame();
+		testBuildingTheDictionary();  
+		testScrabbleScore();    
+		testCreateHands();  
+		testPlayHands();
+		playGame();
 	}
 
 	public static void testBuildingTheDictionary() {
