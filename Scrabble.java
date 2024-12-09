@@ -64,36 +64,27 @@ public class Scrabble {
 	public static int wordScore(String word) {
 		//// Replace the following statement with your code
 		int score = 0;
-		if (isWordInDictionary(word)){
-			if(word.length() == HAND_SIZE){
-				return 50;
-			}
-			 else if (MyString.subsetOf("runi", word)){
-				return 1000;
-			}else{
 		for (int i = 0 ; i < word.length() ; i++){
-			char letter = word.charAt(i);
-			int letterIn = letterToIndex(letter);
-			if (letterIn != -1){
-				score += SCRABBLE_LETTER_VALUES[letterIn];
-			}
+			int index = word.charAt(i) - 97;
+				score += SCRABBLE_LETTER_VALUES[index];
 		}
 		score *= word.length();
-	}}
+		if(word.length() == HAND_SIZE){
+			score += 50;
+		} 
+		if(MyString.subsetOf("runi", word)){
+			score += 1000;
+		}
 		return score;
 	}
-	public static int letterToIndex(char letter) {
-		if(letter >= 'a' && letter <= 'z'){
-			return letter;
-		}
-		return -1;
-	}
+	
 	
 	// Creates a random hand of length (HAND_SIZE - 2) and then inserts
 	// into it, at random indexes, the letters 'a' and 'e'
 	// (these two vowels make it easier for the user to construct words)
 	public static String createHand() {
 		//// Replace the following statement with your code
+		
 		return null;
 	}
 	
