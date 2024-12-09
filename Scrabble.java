@@ -49,14 +49,24 @@ public class Scrabble {
 	// Checks if the given word is in the dictionary.
 	public static boolean isWordInDictionary(String word) {
 		//// Replace the following statement with your code
-		boolean isInDictionary = false;
-		for (int i = 0 ; i < DICTIONARY.length ; i++){
-			if(word.equals(DICTIONARY[i])){
-				isInDictionary = true;
-				break;
+		// boolean isInDictionary = false;
+		// for (int i = 0 ; i < DICTIONARY.length ; i++){
+		// 	if(word.equals(DICTIONARY[i])){
+		// 		isInDictionary = true;
+		// 		break;
+		// 	}
+		if (NUM_OF_WORDS == 0){
+			In in = new In(WORDS_FILE);
+			while (!in.isEmpty()) {
+				DICTIONARY[NUM_OF_WORDS++] = in.readString().toLowerCase();
 			}
 		}
-		return isInDictionary;
+		for (int i = 0 ; i < DICTIONARY.length ; i++){
+			if (DICTIONARY[i] != null){
+				if (DICTIONARY[i].toLowerCase().equals(word)) return true;
+			}
+		}
+		return false;
 	}
 	
 	// Returns the Scrabble score of the given word.
