@@ -1,14 +1,20 @@
+import java.util.Random;
+
 /**
  * A library of string functions.
  */
 public class MyString {
     public static void main(String args[]) {
-        String hello = "hello";
-        System.out.println(countChar(hello, 'h'));
-        System.out.println(countChar(hello, 'l'));
-        System.out.println(countChar(hello, 'z'));
-        System.out.println(spacedString(hello));
+        // String hello = "hello";
+        // System.out.println(countChar(hello, 'h'));
+        // System.out.println(countChar(hello, 'l'));
+        // System.out.println(countChar(hello, 'z'));
+        System.out.println(spacedString("a"));
         //// Put your other tests here.
+        System.out.println(subsetOf("runi", "running"));
+        System.out.println(randomStringOfLetters(3));
+        System.out.println(remove("abc","a"));
+        System.out.println(insertRandomly('s', "cat"));
     }
 
     /**
@@ -20,8 +26,14 @@ public class MyString {
      * @return the number of times c appears in str
      */
     public static int countChar(String str, char ch) {
-        //// Replace the following statement with your code
-        return 0;
+        //// Replace the following statement with your code 
+        int counter = 0;
+        for(int i = 0 ; i < str.length() ; i++){
+            if(str.charAt(i) == ch){
+                counter++;
+            }
+        }
+        return counter;
     }
 
     /** Returns true if str1 is a subset string str2, false otherwise
@@ -37,7 +49,21 @@ public class MyString {
      */
     public static boolean subsetOf(String str1, String str2) {
          //// Replace the following statement with your code
-        return false;
+         if (str1 == ""){
+            return true;
+         }
+         for (int i = 0; i < str1.length(); i++) {
+            char ch = str1.charAt(i);
+            int index = str2.indexOf(ch);
+
+            if (index == -1) {
+                return false;
+            }   
+            str2 = str2.substring(0, index) + str2.substring(index + 1);
+        }
+        
+
+        return true;
     }
 
     /** Returns a string which is the same as the given string, with a space
@@ -50,7 +76,16 @@ public class MyString {
      */
     public static String spacedString(String str) {
         //// Replace the following statement with your code
-        return null;
+      if( str == ""){
+        return str;
+      }
+        String newStr = "";
+  
+       for ( int i = 0 ; i < str.length() -1 ; i++){
+        newStr += (str.charAt(i) + " " );
+       }
+       newStr += str.charAt(str.length() - 1);
+        return newStr;
     }
   
     /**
@@ -64,8 +99,13 @@ public class MyString {
      * @return a randomly generated string, consisting of 'n' lowercase letters
      */
     public static String randomStringOfLetters(int n) {
-        //// Replace the following statement with your code
-        return null;
+        //// Replace the following statement with your code 
+        String randomStr = "";
+        for (int i = 0 ; i < n ; i ++){
+            char randomChar = (char) ('a' +  new Random().nextInt(26));
+            randomStr += randomChar;
+        }
+        return randomStr;
     }
 
     /**
@@ -78,8 +118,18 @@ public class MyString {
      * @return a string consisting of str1 minus all the characters of str2
      */
     public static String remove(String str1, String str2) {
-       //// Replace the following statement with your code
-        return null;
+       //// Replace the following statement with your code 
+       String newRemoveStr = str1;
+       if (str2 == ""){
+        return str1;
+       }
+       for(int i = 0 ; i < str2.length() ; i++){
+       int index = newRemoveStr.indexOf(str2.charAt(i));
+        if (index >= 0){
+            newRemoveStr = newRemoveStr.substring(0, index) + newRemoveStr.substring( index + 1);
+        }
+       }
+        return newRemoveStr;
     }
 
     /**
